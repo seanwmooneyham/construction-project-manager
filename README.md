@@ -19,6 +19,7 @@ This application allows the project manager or foreman of a construction project
   * Name
   * Task
   * Location
+  * Time?
 * Location table (floor / description)
 * Punch list
 * Inspection / potential code violations
