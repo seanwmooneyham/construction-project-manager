@@ -8,14 +8,6 @@ body {
   background: #fafafa;
 }
 
-p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1em;
-  font-weight: 300;
-  line-height: 1.7em;
-  color: #999;
-}
-
 a,
 a:hover,
 a:focus {
@@ -39,12 +31,6 @@ a:focus {
   border: none;
 }
 
-.line {
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px dashed #ddd;
-  margin: 40px 0;
-}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -169,3 +155,7 @@ a.article:hover {
 }
 
 /* --------------END DEMO -------------*/
+
+
+
+
