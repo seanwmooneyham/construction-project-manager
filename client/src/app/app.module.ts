@@ -11,7 +11,7 @@ import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 
 
 
-let toolState = { name: 'tool', url: 'tools/tool-list', component: ToolListComponent };
+let toolState = { name: 'tool', url: 'tool/tool-list', component: ToolListComponent };
 let materialState = { name: 'material', url: 'material/material-list', component: MaterialListComponent };
 
 @NgModule({
