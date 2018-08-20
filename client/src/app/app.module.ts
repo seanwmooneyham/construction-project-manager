@@ -7,8 +7,7 @@ import { MaterialListComponent } from './material/material-list/material-list.co
 import { MaterialEditComponent } from './material/material-edit/material-edit.component';
 import { UIRouterModule } from '@uirouter/angular'
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
-
-
+import { HttpClientModule} from "@angular/common/http";
 
 
 let toolState = { name: 'tool', url: 'tool/tool-list', component: ToolListComponent };
@@ -24,6 +23,7 @@ let materialState = { name: 'material', url: 'material/material-list', component
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     UIRouterModule.forRoot({ states: [toolState, materialState], useHash: true })
   ],
   providers: [],

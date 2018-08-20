@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TOOLS } from "../../common/mock-tools";
+import { ToolsService} from "../../common/tools.service";
+
 
 @Component({
   selector: 'app-tool-list',
@@ -8,11 +9,19 @@ import { TOOLS } from "../../common/mock-tools";
 })
 export class ToolListComponent implements OnInit {
 
-  tools = TOOLS;
+  tools: Array<any>;
 
-  constructor() { }
+  constructor(private toolService: ToolsService) { }
 
   ngOnInit() {
+      this.toolService.getAll().subscribe(data => {
+          this.tools = data;
+      });
+    //this.getTools();
+  }
+
+  getTools(): void {
+
   }
 
 }
