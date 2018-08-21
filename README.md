@@ -25,5 +25,11 @@ This application allows the project manager or foreman of a construction project
 * Inspection / potential code violations
 * Calculations
 
-
-
+## Starting the Application
+* Start REST
+  * cd rest
+  * ./mvnw spring-boot:run
+  
+* Start Client and Open Browser
+  * cd client
+  * ng serve --open
