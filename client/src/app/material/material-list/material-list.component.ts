@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MATERIAL_LIST} from "../../common/mock-material";
+import {MaterialService} from "../../common/material/material.service";
 
 @Component({
   selector: 'app-material-list',
@@ -8,11 +8,20 @@ import { MATERIAL_LIST} from "../../common/mock-material";
 })
 export class MaterialListComponent implements OnInit {
 
-  materialList = MATERIAL_LIST;
+    materialList: Array<any>;
 
-  constructor() { }
+    constructor(private materialService: MaterialService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+
+        this.getMaterial();
+    }
+
+    getMaterial(): void {
+        this.materialService.getAll().subscribe(data => {
+            this.materialList = data;
+        });
+    }
 
 }
