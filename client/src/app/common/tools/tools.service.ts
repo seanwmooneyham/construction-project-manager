@@ -16,6 +16,10 @@ export class ToolsService {
     getAll(): Observable<any> {
         return this.http.get(this.TOOL_API + '/list');
     }
+
+    deleteTool(toolId) {
+        return this.http.delete(this.TOOL_API + '/edit/' + toolId);
+    }
 }
 
 
