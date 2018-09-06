@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Tools</h2>
+  <button class="btn btn-info add-tool-button" (click)="onAddTool()">Add Tool <i class="fa fa-plus"></i></button>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -11,8 +12,8 @@
       <tr *ngFor="let tool of tools">
         <td>{{ tool.id }}</td>
         <td>{{ tool.name }}</td>
-        <td><button class="btn btn-primary" (click)="onEdit(tool.name)"><i class="far fa-edit"></i></button></td>
-        <td><button class="btn btn-danger" (click)="onDelete(tool.name, tool.id)"><i class="far fa-trash-alt"></i></button></td>
+        <td><button class="btn btn-primary" (click)="onEdit(tool)"><i class="far fa-edit"></i></button></td>
+        <td><button class="btn btn-danger" (click)="onDelete(tool)"><i class="far fa-trash-alt"></i></button></td>
       </tr>
     </tbody>
   </table>

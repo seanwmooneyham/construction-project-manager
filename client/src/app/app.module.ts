@@ -10,9 +10,11 @@ import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmComponent} from './common/modal/confirm/confirm.component';
-import {EditComponent} from './common/modal/edit/edit.component';
+import { FormsModule} from "@angular/forms";
+
 import * as $ from 'jquery';
-import {RouterModule, Routes} from "@angular/router";
+import {Material} from "./material/material";
+
 
 
 let toolState = {name: 'tool', url: 'tool/tool-list', component: ToolListComponent};
@@ -27,18 +29,17 @@ let materialState = {name: 'material', url: 'material/material-list', component:
         ToolEditComponent,
         MaterialListComponent,
         MaterialEditComponent,
-        ConfirmComponent,
-        EditComponent
+        ConfirmComponent
     ],
     imports: [
-
         BrowserModule,
+        FormsModule,
         HttpClientModule,
         NgbModule,
         UIRouterModule.forRoot({states: [toolState, materialState], useHash: true})
     ],
     providers: [],
-    entryComponents: [ConfirmComponent, EditComponent],
+    entryComponents: [ConfirmComponent, ToolEditComponent, MaterialEditComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {

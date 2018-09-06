@@ -1,4 +1,9 @@
 
+h2 {
+  display: inline-block;
+}
+
+
 p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.1em;
@@ -13,4 +18,8 @@ p {
   height: 1px;
   border-bottom: 1px dashed #ddd;
   margin: 40px 0;
+}
+
+.add-tool-button {
+  float: right;
 }
