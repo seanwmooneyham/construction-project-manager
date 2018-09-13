@@ -1,28 +1,18 @@
 package com.constructionprojectmanager.rest.tool;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import javax.inject.Inject;
 import java.util.Optional;
 
 
 @RestController
 @RequestMapping(path = "/tools")
 public class ToolController {
-    private Logger logger = LoggerFactory.getLogger(ToolController.class);
-
-
-    private final ToolRepository toolRepository;
-
-    // constructor injection is recommended over field injection
-    @Inject
-    public ToolController(ToolRepository toolRepository) {
-        this.toolRepository = toolRepository;
-    }
+    // using field injection for this particular class
+    @Autowired
+    private ToolRepository toolRepository;
 
     // view all tools
     @GetMapping("/list")
