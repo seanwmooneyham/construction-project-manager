@@ -1,3 +1,18 @@
-<p>
-  material-edit works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="materialName">Material Name</label>
+      <input type="text"  class="form-control" id="materialName" placeholder="{{ material.name }}" [(ngModel)]="newMaterialName" name="materialName">
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="onEdit()">Yes</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss('Cancel clicked')">Cancel</button>
+</div>

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ToolsService } from "../../common/tools/tools.service";
-import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {EditComponent} from "../../common/modal/edit/edit.component";
+import {Component, OnInit} from '@angular/core';
+import {ToolsService} from "../../common/tools/tools.service";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmComponent} from "../../common/modal/confirm/confirm.component";
-import { StateService } from '@uirouter/core';
+import {ToolEditComponent} from "../tool-edit/tool-edit.component";
+import {Tool} from "../tool";
 
 
 @Component({
@@ -13,13 +13,13 @@ import { StateService } from '@uirouter/core';
 })
 export class ToolListComponent implements OnInit {
 
-    tools: Array<any>;
+    tools: Array<Tool>;
 
     constructor(
         private toolService: ToolsService,
-        private modalService: NgbModal,
-        private $state: StateService
-    ) {}
+        private modalService: NgbModal
+    ) {
+    }
 
 
     ngOnInit() {
@@ -28,32 +28,49 @@ export class ToolListComponent implements OnInit {
     }
 
     getTools(): void {
-        this.toolService.getAll().subscribe(data => {
+        this.toolService.getAllTools().subscribe(data => {
             this.tools = data;
         });
     }
 
-    onEdit(toolName) {
-        const modalRef = this.modalService.open(EditComponent);
-        modalRef.componentInstance.title = 'Edit ' + toolName + '?';
-        modalRef.componentInstance.tool = toolName;
+    onAddTool() {
+        let tool = new Tool;
+        const modalRef = this.modalService.open(ToolEditComponent);
+        modalRef.componentInstance.tool = tool;
+        modalRef.componentInstance.title = 'Add New Tool';
 
         modalRef.result.then((result) => {
-            console.log(`${result}: REST call to edit tool info`);
+            this.toolService.addTool(result).subscribe(() => {
+                this.getTools();
+            }, error => console.error(error));
         }, (reason) => {
             console.log(`reason for dismissal: ${reason}`);
         });
     }
 
-    onDelete(toolName, toolId) {
+    onEdit(tool: Tool) {
+        const modalRef = this.modalService.open(ToolEditComponent);
+        modalRef.componentInstance.tool = tool;
+
+        modalRef.result.then((result) => {
+            this.toolService.editTool(result).subscribe(() => {
+                this.getTools();
+            }, error => console.error(error));
+        }, (reason) => {
+            console.log(`reason for dismissal: ${reason}`);
+        });
+    }
+
+    onDelete(tool: Tool) {
 
         const modalRef = this.modalService.open(ConfirmComponent);
-        modalRef.componentInstance.title = 'Delete ' + toolName + '?';
-        modalRef.componentInstance.message = `Delete ${toolName}?`;
+        modalRef.componentInstance.title = 'Delete ' + tool.name + '?';
+        modalRef.componentInstance.message = `Delete ${tool.name}?`;
 
-        modalRef.result.then(() => {
-            this.toolService.deleteTool(toolId).subscribe(() => {
-                this.reloadToolList(toolName);
+        modalRef.result.then((result) => {
+            console.log(result);
+            this.toolService.deleteTool(tool).subscribe(() => {
+                this.getTools();
             }, error => console.error(error));
 
         }, (reason) => {
@@ -61,15 +78,5 @@ export class ToolListComponent implements OnInit {
         });
 
     }
-
-    reloadToolList(toolname) {
-        this.$state.reload().then(() => {
-            console.log(`${toolname} deleted from list`);
-        }, (reason) => {
-            console.error(reason);
-        });
-    }
-
-
 
 }
