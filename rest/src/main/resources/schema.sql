@@ -13,7 +13,12 @@ CREATE TABLE IF NOT EXISTS material(
   name VARCHAR(75)
 );
 
-
+CREATE TABLE IF NOT EXISTS announcement(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  text VARCHAR(400),
+  created_date DATE,
+  expiration_date DATE
+);
 
 
 
