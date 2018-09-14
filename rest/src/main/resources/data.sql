@@ -9,3 +9,5 @@ INSERT INTO material VALUES(null, '1/4" EMT Couplings');
 INSERT INTO material VALUES(null, '1/4 - 20 Screws');
 INSERT INTO material VALUES(null, '1/2" Rigid');
 INSERT INTO material VALUES(null, '4" Square Electrical Box');
+
+INSERT INTO announcement VALUES(NULL, 'Work smart and work safe, wear your PPE!', CURDATE(), CURDATE() + 7);

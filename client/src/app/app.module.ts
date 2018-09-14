@@ -14,11 +14,18 @@ import { FormsModule} from "@angular/forms";
 
 import * as $ from 'jquery';
 import {Material} from "./material/material";
+import { HomeComponent } from './home/home.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { AnnouncementAlertComponent } from './announcement/announcement-alert/announcement-alert.component';
 
 
 
-let toolState = {name: 'tool', url: 'tool/tool-list', component: ToolListComponent};
-let materialState = {name: 'material', url: 'material/material-list', component: MaterialListComponent};
+const toolState = {name: 'tool', url: 'tool/tool-list', component: ToolListComponent};
+const materialState = {name: 'material', url: 'material/material-list', component: MaterialListComponent};
+const homeComponent = {name: 'home', url: '', component: HomeComponent};
+
+const appRoutes = [toolState, materialState, homeComponent];
+const modalComponents = [ConfirmComponent, AnnouncementAlertComponent, ToolEditComponent, MaterialEditComponent];
 
 
 
@@ -29,17 +36,20 @@ let materialState = {name: 'material', url: 'material/material-list', component:
         ToolEditComponent,
         MaterialListComponent,
         MaterialEditComponent,
-        ConfirmComponent
+        ConfirmComponent,
+        HomeComponent,
+        AnnouncementComponent,
+        AnnouncementAlertComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
         NgbModule,
-        UIRouterModule.forRoot({states: [toolState, materialState], useHash: true})
+        UIRouterModule.forRoot({states: appRoutes, useHash: true})
     ],
     providers: [],
-    entryComponents: [ConfirmComponent, ToolEditComponent, MaterialEditComponent],
+    entryComponents: modalComponents,
     bootstrap: [AppComponent]
 })
 export class AppModule {
