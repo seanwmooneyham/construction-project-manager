@@ -9,5 +9,5 @@ import javax.persistence.Table;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 @Table(name="announcement")
-public interface AnnouncementRepository  extends CrudRepository<Announcement, Long> {
+public interface AnnouncementRepository  extends CrudRepository<Announcement, Integer> {
 }

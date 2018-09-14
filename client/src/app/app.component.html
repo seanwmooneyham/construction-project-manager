@@ -2,20 +2,20 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Toggleable Side Bar</h3>
+            <h3>Main Menu</h3>
         </div>
 
         <ul class="list-unstyled components">
 
             <li>
-                <a uiSref="home">Home</a>
+                <a uiSref="home" (click)="shouldToggle()" >Home</a>
             </li>
 
             <li>
-                <a uiSref="tool">Tools</a>
+                <a uiSref="tool" (click)="shouldToggle()">Tools</a>
             </li>
             <li>
-                <a uiSref="material">Material</a>
+                <a uiSref="material" (click)="shouldToggle()">Material</a>
             </li>
         </ul>
 
@@ -27,9 +27,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSideBar()">
+                <button type="button" id="sidebarCollapse" class="btn btn-info toggle-button" (click)="toggleSideBar()">
                     <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
+                    <span>Toggle Menu</span>
                 </button>
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

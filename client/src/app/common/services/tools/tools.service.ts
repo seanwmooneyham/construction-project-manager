@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
-import { Tool } from "../../tools/tool";
+import { Tool } from "../../../tools/tool";
 
 
 @Injectable({
@@ -31,6 +31,7 @@ export class ToolsService {
     editTool(tool: Tool) {
       let result: Observable<Object>;
       result = this.http.put(this.TOOL_API + '/edit/' + tool.id, tool);
+      console.log(result);
       return result;
     }
 }

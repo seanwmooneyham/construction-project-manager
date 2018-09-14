@@ -1,0 +1,20 @@
+.delete-btn {
+    float: right;
+}
+
+.createdOn {
+    float: right;
+    margin-right: 10px;
+}
+
+.announcement-create {
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    margin-left: 10px;
+}
+
+.container {
+    padding-bottom: 50px;
+}

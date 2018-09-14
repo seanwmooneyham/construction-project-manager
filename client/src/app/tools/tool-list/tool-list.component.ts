@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ToolsService} from "../../common/tools/tools.service";
+import {ToolsService} from "../../common/services/tools/tools.service";
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmComponent} from "../../common/modal/confirm/confirm.component";
 import {ToolEditComponent} from "../tool-edit/tool-edit.component";

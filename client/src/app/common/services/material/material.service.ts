@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs/internal/Observable";
 import {HttpClient} from "@angular/common/http";
-import {Material} from "../../material/material";
+import {Material} from "../../../material/material";
 
 
 @Injectable({
