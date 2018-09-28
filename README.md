@@ -1,5 +1,5 @@
 # construction-project-manager
-This application allows the project manager or foreman of a construction project to keep track of material and tool inventory.
+This application (developed using Angular 6, Spring MVC, and MySQL) allows the project manager or foreman of a construction project to keep track of material and tool inventory.  Important announcements for workers to view can be created.  
 
 ##Brainstorming
 * SPA
