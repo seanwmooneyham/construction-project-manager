@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {AnnouncementAlertComponent} from "./announcement/announcement-alert/announcement-alert.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
@@ -10,16 +10,34 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class AppComponent implements OnInit {
     title = 'app';
+    public innerWidth: any;
 
-    constructor(private modalService: NgbModal) { }
+    constructor(
+        private modalService: NgbModal
+    ) { }
 
     ngOnInit() {
-        this.onAlert();
+        setTimeout(() => { this.onAlert() });
+        this.innerWidth = window.innerWidth;
     }
+
+    //Updates App on screen resize
+
+    @HostListener('window:resize', ['$event'])
+    onResize() {
+        this.innerWidth = window.innerWidth;
+    }
+
 
 
     toggleSideBar() {
         $('#sidebar').toggleClass('active');
+    }
+
+    shouldToggle() {
+        if( this.innerWidth < 768) {
+            this.toggleSideBar();
+        }
     }
 
 

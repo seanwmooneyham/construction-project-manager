@@ -1,23 +1,14 @@
-package com.constructionprojectmanager.rest.tool;
+package com.constructionprojectmanager.rest.announcement;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
 import javax.persistence.Table;
+
 
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
-@Table(name="tool")
-public interface ToolRepository extends CrudRepository<Tool, Long> {
-
+@Table(name="announcement_splash")
+public interface AnnouncementSplashRepository extends CrudRepository<AnnouncementSplash, Integer> {
 
 }
-
-
-
-
-
-
-
-

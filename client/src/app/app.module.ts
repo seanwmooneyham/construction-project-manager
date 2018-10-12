@@ -1,3 +1,4 @@
+import * as $ from 'jquery';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
@@ -11,13 +12,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmComponent} from './common/modal/confirm/confirm.component';
 import { FormsModule} from "@angular/forms";
-
-import * as $ from 'jquery';
-import {Material} from "./material/material";
 import { HomeComponent } from './home/home.component';
-import { AnnouncementComponent } from './announcement/announcement.component';
+import { AnnouncementListComponent } from './announcement/announcement-list.component';
 import { AnnouncementAlertComponent } from './announcement/announcement-alert/announcement-alert.component';
-
 
 
 const toolState = {name: 'tool', url: 'tool/tool-list', component: ToolListComponent};
@@ -38,7 +35,7 @@ const modalComponents = [ConfirmComponent, AnnouncementAlertComponent, ToolEditC
         MaterialEditComponent,
         ConfirmComponent,
         HomeComponent,
-        AnnouncementComponent,
+        AnnouncementListComponent,
         AnnouncementAlertComponent
     ],
     imports: [

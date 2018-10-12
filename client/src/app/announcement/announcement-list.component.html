@@ -1,0 +1,43 @@
+<div class="container">
+
+    <div class="input-group announcement-create">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><button class="btn btn-info add-tool-button" (click)="onAddAnnouncement()">Add Announcement <i
+                    class="fa fa-plus"></i></button></span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" placeholder="Enter new announcement"
+                  [(ngModel)]="announcementMessage" name="alertMessage"></textarea>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ dropDownText }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" name="danger" id="danger" (click)="selectLevel('danger')">Danger</button>
+                <button class="dropdown-item" name="success" id="success" (click)="selectLevel('success')">Success
+                </button>
+                <button class="dropdown-item" name="warning" id="warning" (click)="selectLevel('warning')">Warning
+                </button>
+                <button class="dropdown-item" name="primary" id="primary" (click)="selectLevel('primary')">Primary
+                </button>
+                <button class="dropdown-item" name="info" id="info" (click)="selectLevel('info')">Info</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngFor="let announcement of announcements">
+        <div class="radio">
+            <ngb-alert [dismissible]="false" [type]="announcement.announcement_level">
+                <label><input type="radio" name="announcement" (change)="updateAlert(announcement)"
+                              [attr.checked]="isSelected(announcement.announcement_id) ? true : null"></label>
+                {{ announcement.text }}
+                <button class="btn btn-danger delete-btn" (click)="onDelete(announcement)"><i
+                        class="far fa-trash-alt"></i></button>
+                <span class="createdOn">Created on: {{ formatDate(announcement.created_date) }}</span>
+            </ngb-alert>
+        </div>
+    </div>
+</div>
+
+

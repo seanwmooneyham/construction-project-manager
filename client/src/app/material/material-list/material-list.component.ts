@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MaterialService} from "../../common/material/material.service";
+import {MaterialService} from "../../common/services/material/material.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Material} from "../material";
 import {MaterialEditComponent} from "../material-edit/material-edit.component";

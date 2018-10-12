@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.xml.ws.Response;
 import java.util.Optional;
 
 
@@ -26,9 +28,9 @@ public class ToolController {
     @PostMapping("/list")
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public Tool addNewTool(@RequestBody Tool tool) {
+    public ResponseEntity<Tool> addNewTool(@RequestBody Tool tool) {
         Tool newTool = new Tool(tool.getName());
-        return toolRepository.save(newTool);
+        return new ResponseEntity<>(toolRepository.save(newTool), HttpStatus.CREATED);
     }
 
     // delete tool by id
