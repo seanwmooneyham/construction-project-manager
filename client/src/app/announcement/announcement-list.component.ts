@@ -32,7 +32,9 @@ export class AnnouncementListComponent implements OnInit {
 
     getAlertSplash() {
         this.announcementsService.getAnnouncementSplash().subscribe(data => {
+            console.log("assigning announcement_splash :: " + this.announcement_splash);
             this.announcement_splash = data;
+            console.log("after assignment :: " + this.announcement_splash);
             console.log(this.announcement_splash.announcement_id)
         })
     }
@@ -67,23 +69,26 @@ export class AnnouncementListComponent implements OnInit {
     }
 
     onDelete(announcement: Announcement) {
-        const modalRef = this.modalService.open(ConfirmComponent);
-        modalRef.componentInstance.title = 'Delete Announcement?';
-        modalRef.componentInstance.message = 'Delete Announcement?';
+        //if(announcement.announcement_id != this.announcement_splash.announcement_id) {
+            const modalRef = this.modalService.open(ConfirmComponent);
+            modalRef.componentInstance.title = 'Delete Announcement?';
+            modalRef.componentInstance.message = 'Delete Announcement?';
 
-        modalRef.result.then((result) => {
-            this.announcementsService.deleteAnnouncement(announcement).subscribe(() => {
-                this.getAnnouncements();
-            }, error => console.error(error));
-        }, (reason) => {
-            console.log(`reason for dismissal: ${reason}`);
-        });
+            modalRef.result.then((result) => {
+                this.announcementsService.deleteAnnouncement(announcement).subscribe(() => {
+                    this.getAnnouncements();
+                }, error => console.error(error));
+            }, (reason) => {
+                console.log(`reason for dismissal: ${reason}`);
+            });
+       // }
     }
 
 
     updateAlert(announcement) {
         this.announcementsService.changeAnnouncementSplash(announcement).subscribe(() => {
             console.log("alert updated");
+            this.getAlertSplash();
         });
     }
 
