@@ -2,6 +2,7 @@
 
     <div class="input-group announcement-create">
         <div class="input-group-prepend">
+
             <span class="input-group-text"><button class="btn btn-info add-tool-button" (click)="onAddAnnouncement()">Add Announcement <i
                     class="fa fa-plus"></i></button></span>
         </div>
@@ -26,11 +27,13 @@
     </div>
 
 
+
     <div *ngFor="let announcement of announcements">
         <div class="radio">
             <ngb-alert [dismissible]="false" [type]="announcement.announcement_level">
                 <label><input type="radio" name="announcement" (change)="updateAlert(announcement)"
-                              [attr.checked]="isSelected(announcement.announcement_id) ? true : null"></label>
+                              [attr.checked]="isSelected(announcement.announcement_id) ? true : null" data-toggle="tooltip"
+                              title="Select to show as alert"></label>
                 {{ announcement.text }}
                 <button class="btn btn-danger delete-btn" (click)="onDelete(announcement)"><i
                         class="far fa-trash-alt"></i></button>

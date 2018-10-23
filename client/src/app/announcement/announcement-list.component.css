@@ -18,3 +18,8 @@
 .container {
     padding-bottom: 50px;
 }
+
+input[type=radio] {
+    width: 15px;
+    height: 15px;
+}
