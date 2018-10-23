@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping(path = "/tools")
+@RequestMapping(path = "/api/tools")
 public class ToolController {
     // using field injection for this particular class
     @Autowired

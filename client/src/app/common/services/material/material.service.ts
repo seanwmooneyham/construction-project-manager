@@ -9,7 +9,7 @@ import {Material} from "../../../material/material";
 })
 export class MaterialService {
 
-    public API = '//localhost:8080';
+    public API = '/api';
     public MATERIAL_API = this.API + '/material';
 
     constructor(private http: HttpClient) {

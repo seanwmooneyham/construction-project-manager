@@ -9,7 +9,7 @@ import {Announcement} from "../../../announcement/announcement";
 
 export class AnnouncementsService {
 
-    public API = '//localhost:8080';
+    public API = '/api';
     public ANNOUNCEMENT_API = this.API + '/announcements';
     public announcement_splash;
 

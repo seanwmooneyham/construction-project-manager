@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/announcements")
+@RequestMapping(path = "/api/announcements")
 public class AnnouncementController {
     private static final Logger logger = LoggerFactory.getLogger(AnnouncementController.class);
 

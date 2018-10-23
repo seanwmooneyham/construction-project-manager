@@ -30,7 +30,7 @@ public class ToolControllerTest extends RestApplicationTest {
     @Test
     public void getToolList() throws Exception {
 
-        String uri = "/tools/list";
+        String uri = "/api/tools/list";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
@@ -43,7 +43,7 @@ public class ToolControllerTest extends RestApplicationTest {
     @Test
     public void createNewTool() throws Exception {
 
-        String uri = "/tools/list";
+        String uri = "/api/tools/list";
         Tool mockTool = new Tool("mockTool");
 
         String inputJson = super.mapToJson(mockTool);

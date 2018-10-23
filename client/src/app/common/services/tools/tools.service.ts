@@ -9,7 +9,7 @@ import { Tool } from "../../../tools/tool";
 })
 export class ToolsService {
 
-    public API = '//localhost:8080';
+    public API = '/api';
     public TOOL_API = this.API + '/tools';
 
     constructor(private http: HttpClient) { }

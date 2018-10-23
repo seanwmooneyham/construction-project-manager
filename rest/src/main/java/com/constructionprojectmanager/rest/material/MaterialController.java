@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping(path = "/material")
+@RequestMapping(path = "/api/material")
 public class MaterialController {
 
     private final MaterialRepository materialRepository;
