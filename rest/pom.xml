@@ -7,13 +7,11 @@
         <groupId>com.construction-project-manager</groupId>
         <artifactId>construction-project-manager</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <!--<relativePath>../pom.xml</relativePath>-->
     </parent>
 
 
 
     <artifactId>rest</artifactId>
-    <!--<version>0.0.1-SNAPSHOT</version>-->
     <packaging>jar</packaging>
 
     <name>rest</name>
@@ -69,11 +67,6 @@
             <artifactId>postgresql</artifactId>
             <version>9.4-1200-jdbc41</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -95,6 +88,12 @@
             <version>1</version>
         </dependency>
 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${frontend.artifact.id}</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->
         <!--<artifactId>spring-boot-starter-security</artifactId>-->
@@ -112,26 +111,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
-                        <goals><goal>copy-resources</goal></goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/classes/static/</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}/../client/dist</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            
         </plugins>
     </build>
 

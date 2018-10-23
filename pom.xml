@@ -17,21 +17,18 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <frontend.artifact.id>client</frontend.artifact.id>
+        <backend.artifact.id>rest</backend.artifact.id>
+    </properties>
+
+
+
 
     <modules>
         <module>client</module>
         <module>rest</module>
     </modules>
 
-    <!--<dependencyManagement>-->
-        <!--<dependencies>-->
-            <!--<dependency>-->
-                <!--<groupId>com.construction-project-manager</groupId>-->
-                <!--<artifactId>rest</artifactId>-->
-                <!--<version>0.0.1-SNAPSHOT</version>-->
-                <!--<type>jar</type>-->
-            <!--</dependency>-->
-        <!--</dependencies>-->
-    <!--</dependencyManagement>-->
 
 </project>
