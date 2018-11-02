@@ -1,4 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
+import { environment } from '../environments/environment'
 import {AnnouncementAlertComponent} from "./announcement/announcement-alert/announcement-alert.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
@@ -14,7 +15,9 @@ export class AppComponent implements OnInit {
 
     constructor(
         private modalService: NgbModal
-    ) { }
+    ) {
+        console.log(environment.production);
+    }
 
     ngOnInit() {
         setTimeout(() => { this.onAlert() });
