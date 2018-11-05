@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
 
     onAlert() {
-        const modalRef = this.modalService.open(AnnouncementAlertComponent);
+        let modalRef = this.modalService.open(AnnouncementAlertComponent);
 
         modalRef.result.then((result) => {
             console.log(result);

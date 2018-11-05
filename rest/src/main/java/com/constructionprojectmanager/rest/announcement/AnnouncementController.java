@@ -1,7 +1,5 @@
 package com.constructionprojectmanager.rest.announcement;
 
-
-import com.constructionprojectmanager.rest.tool.Tool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,15 +43,23 @@ public class AnnouncementController {
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Announcement> deleteAnnouncement(@PathVariable("id") int id) {
         Optional<Announcement> dbAnnouncement = announcementRepository.findById(id);
+        Optional<AnnouncementSplash> dbAnnouncementSplash = announcementSplashRepository.findById(ANNOUNCEMENT_SPLASH_RECORD_ID);
         if(dbAnnouncement.isPresent()) {
-            announcementRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+            if(id != dbAnnouncementSplash.get().getFk_announcement_id()) {
+                announcementRepository.deleteById(id);
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+                logger.error("Cannot delete a currently selected announcement record." + id + " ::: " + dbAnnouncementSplash.get().getFk_announcement_id());
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/alert")
     @CrossOrigin(origins = "http://localhost:4200")
+    @ResponseBody
     public ResponseEntity<Announcement> getAlert() {
         Optional<AnnouncementSplash> dbAnnouncementSplash = announcementSplashRepository.findById(ANNOUNCEMENT_SPLASH_RECORD_ID );
         return new ResponseEntity<>(dbAnnouncementSplash.get().getAnnouncement(), HttpStatus.OK);
@@ -65,7 +71,6 @@ public class AnnouncementController {
     public ResponseEntity<AnnouncementSplash> changeAlert(@RequestBody Announcement announcement) {
         Optional<AnnouncementSplash> dbAnnouncementSplash = announcementSplashRepository.findById(ANNOUNCEMENT_SPLASH_RECORD_ID);
         dbAnnouncementSplash.get().setFk_announcement_id(announcement.getAnnouncement_id());
-        //dbAnnouncementSplash.get().getAnnouncement().setAnnouncement_id(announcement.getAnnouncement_id());
         return new ResponseEntity<>(announcementSplashRepository.save(dbAnnouncementSplash.get()), HttpStatus.OK);
     }
 }
