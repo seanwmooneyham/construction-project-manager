@@ -35,8 +35,9 @@
                               [attr.checked]="isSelected(announcement.announcement_id) ? true : null" data-toggle="tooltip"
                               title="Select to show as alert"></label>
                 {{ announcement.text }}
-                <button class="btn btn-danger delete-btn" (click)="onDelete(announcement)"><i
-                        class="far fa-trash-alt"></i></button>
+                <button class="btn btn-danger delete-btn" (click)="onDelete(announcement)"
+                        [disabled]="isSelected(announcement.announcement_id) ? true : null" ><i
+                        class="far fa-trash-alt"  ></i></button>
                 <span class="createdOn">Created on: {{ formatDate(announcement.created_date) }}</span>
             </ngb-alert>
         </div>

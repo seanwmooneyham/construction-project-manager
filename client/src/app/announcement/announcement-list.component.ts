@@ -13,12 +13,11 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 export class AnnouncementListComponent implements OnInit {
 
     announcements: Array<Announcement>;
-
     announcement_splash: Announcement;
-
     announcementMessage = '';
     dropDownText = 'Choose Level';
     announcementLevel = 'info';
+    disabled = true;
 
     constructor(
         private announcementsService: AnnouncementsService,
@@ -32,10 +31,7 @@ export class AnnouncementListComponent implements OnInit {
 
     getAlertSplash() {
         this.announcementsService.getAnnouncementSplash().subscribe(data => {
-            console.log("assigning announcement_splash :: " + this.announcement_splash);
             this.announcement_splash = data;
-            console.log("after assignment :: " + this.announcement_splash);
-            console.log(this.announcement_splash.announcement_id)
         })
     }
 
@@ -47,6 +43,7 @@ export class AnnouncementListComponent implements OnInit {
 
     isSelected(id) {
         return id == this.announcement_splash.announcement_id;
+
     }
 
     onAddAnnouncement() {
@@ -59,7 +56,7 @@ export class AnnouncementListComponent implements OnInit {
             });
             this.announcementMessage = '';
         } else {
-            console.error("User must enter message!");
+            console.error("User must enter message.");
         }
     }
 
@@ -69,8 +66,8 @@ export class AnnouncementListComponent implements OnInit {
     }
 
     onDelete(announcement: Announcement) {
-        //if(announcement.announcement_id != this.announcement_splash.announcement_id) {
-            const modalRef = this.modalService.open(ConfirmComponent);
+        if(announcement.announcement_id != this.announcement_splash.announcement_id) {
+            let modalRef = this.modalService.open(ConfirmComponent);
             modalRef.componentInstance.title = 'Delete Announcement?';
             modalRef.componentInstance.message = 'Delete Announcement?';
 
@@ -81,13 +78,14 @@ export class AnnouncementListComponent implements OnInit {
             }, (reason) => {
                 console.log(`reason for dismissal: ${reason}`);
             });
-       // }
+        } else {
+            console.error("A selected announcement cannot be deleted");
+        }
     }
 
 
     updateAlert(announcement) {
         this.announcementsService.changeAnnouncementSplash(announcement).subscribe(() => {
-            console.log("alert updated");
             this.getAlertSplash();
         });
     }
