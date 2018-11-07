@@ -2,6 +2,12 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import { environment } from '../environments/environment'
 import {AnnouncementAlertComponent} from "./announcement/announcement-alert/announcement-alert.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AppService} from "./common/services/app/app.service";
+import {HttpClient} from "@angular/common/http";
+import { finalize } from 'rxjs/operators';
+import {StateService} from '@uirouter/angular';
+
+
 
 
 @Component({
@@ -9,18 +15,19 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
     title = 'app';
     public innerWidth: any;
 
-    constructor(
-        private modalService: NgbModal
-    ) {
-        console.log(environment.production);
+    constructor(private modalService: NgbModal, private http: HttpClient, private appService: AppService, private stateService: StateService) {
+        this.appService.authenticate(undefined, () => {
+
+        });
+
     }
 
     ngOnInit() {
-        setTimeout(() => { this.onAlert() });
         this.innerWidth = window.innerWidth;
     }
 
@@ -32,6 +39,7 @@ export class AppComponent implements OnInit {
     }
 
 
+    authenticated() { return this.appService.authenticated; }
 
     toggleSideBar() {
         $('#sidebar').toggleClass('active');
@@ -44,18 +52,13 @@ export class AppComponent implements OnInit {
     }
 
 
-
-    onAlert() {
-        let modalRef = this.modalService.open(AnnouncementAlertComponent);
-
-        modalRef.result.then((result) => {
-            console.log(result);
-
-        }, (reason) => {
-            console.log(`reason for dismissal: ${reason}`);
-            this.onAlert();
-        });
+    logout() {
+        this.http.post('/api/logout', {}).pipe(finalize(() => {
+            this.appService.authenticated = false;
+            this.stateService.go('login');
+        })).subscribe();
     }
+
 
 }
 
