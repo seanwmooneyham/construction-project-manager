@@ -3,6 +3,7 @@ import {Announcement} from "./announcement";
 import {AnnouncementsService} from "../common/services/announcements/announcements.service";
 import {ConfirmComponent} from "../common/modal/confirm/confirm.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AnnouncementAlertComponent} from "./announcement-alert/announcement-alert.component";
 
 
 @Component({
@@ -32,7 +33,8 @@ export class AnnouncementListComponent implements OnInit {
     getAlertSplash() {
         this.announcementsService.getAnnouncementSplash().subscribe(data => {
             this.announcement_splash = data;
-        })
+        });
+        this.onAlert();
     }
 
     getAnnouncements() {
@@ -83,6 +85,17 @@ export class AnnouncementListComponent implements OnInit {
         }
     }
 
+    onAlert() {
+        let modalRef = this.modalService.open(AnnouncementAlertComponent);
+
+        modalRef.result.then((result) => {
+            console.log(result);
+
+        }, (reason) => {
+            console.log(`reason for dismissal: ${reason}`);
+            this.onAlert();
+        });
+    }
 
     updateAlert(announcement) {
         this.announcementsService.changeAnnouncementSplash(announcement).subscribe(() => {

@@ -1,4 +1,6 @@
 
+--CREATE EXTENSION pgcrypto;
+
 INSERT INTO tool VALUES(DEFAULT, 'Hammer Drill');
 INSERT INTO tool VALUES(DEFAULT, 'Battery Drill');
 INSERT INTO tool VALUES(DEFAULT, 'Pipe Bender');
@@ -19,3 +21,9 @@ INSERT INTO announcement VALUES(DEFAULT, 'Break time has been changed to 11 am',
 INSERT INTO announcement VALUES(DEFAULT, 'Elevator is out of service all week, eat your Wheaties', 'info', CURRENT_DATE, CURRENT_DATE + INTERVAL '7d');
 
 INSERT INTO announcement_splash VALUES(DEFAULT, 1);
+
+-- INSERT INTO users VALUES('swmooneyham', '{noop}password123', TRUE);
+-- INSERT INTO users VALUES('jsmith', MD5('password123'), TRUE);
+-- INSERT INTO user_roles VALUES('swmooneyham', 'ADMIN');
+-- INSERT INTO user_roles VALUES('swmooneyham', 'USER');
+-- INSERT INTO user_roles VALUES('jsmith', 'USER');
