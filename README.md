@@ -4,6 +4,7 @@ This application (developed using Angular 6, Spring-boot, and Postgres) allows t
 There are two available users test-cpm-user and test-cpm-admin, however, currently the roles do not differ (full access to application for both users).
 
 username: test-cpm-admin (or test-cpm-user)
+
 password: password123
 
 Deployed application can be accessed at:
