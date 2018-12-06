@@ -21,6 +21,8 @@ public class AppStartupRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        //Create test admin and user roles
+
         String encoderId = "{bcrypt}";
         String password = "password123";
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

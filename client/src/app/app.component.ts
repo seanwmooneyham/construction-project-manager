@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
 
 
     logout() {
-        this.http.post('/api/logout', {}).pipe(finalize(() => {
+        this.http.post('api/logout', {}).pipe(finalize(() => {
             this.appService.authenticated = false;
             this.stateService.go('login');
         })).subscribe();
